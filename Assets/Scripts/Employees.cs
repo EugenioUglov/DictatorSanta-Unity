@@ -66,13 +66,71 @@ public class Employees : MonoBehaviour
         return _happinessValue;
     }
     
-    public int AddCountOfEmployees(int additionalCountEmployees)
+    public int AddCountOfEmployeesAsync(int additionalCountEmployees, Action onEnd = null)
     {
+        // _countEmployees += additionalCountEmployees;
+
+        // if (_countEmployees < 0) _countEmployees = 0;
+
+        // _countEmployeesTextMeshPro.text = _countEmployees.ToString();
+
+        // return _countEmployees;
+
+
         _countEmployees += additionalCountEmployees;
+        _isEffectValueChangerInProgress = true;
 
-        if (_countEmployees < 0) _countEmployees = 0;
+        _valueChangerView.AddValueAsync
+        (
+            element: _countEmployeesTextMeshPro, 
+            increaserValue: additionalCountEmployees, 
+            onEnd: () => {
+                _isEffectValueChangerInProgress = false;
+                _countEmployeesTextMeshPro.text = _countEmployees.ToString();
 
-        _countEmployeesTextMeshPro.text = _countEmployees.ToString();
+                onEnd?.Invoke();
+            }
+        );
+
+
+        return _countEmployees;
+    }
+    
+    public int DecreaseCountOfEmployeesAsync(int decreaserValue, Action onEnd = null)
+    {
+        // _countEmployees += additionalCountEmployees;
+        // _isEffectValueChangerInProgress = true;
+
+        // _valueChangerView.AddValueAsync
+        // (
+        //     element: _countEmployeesTextMeshPro, 
+        //     increaserValue: additionalCountEmployees, 
+        //     onEnd: () => {
+        //         _isEffectValueChangerInProgress = false;
+        //         _countEmployeesTextMeshPro.text = _countEmployees.ToString();
+
+        //         onEnd?.Invoke();
+        //     }
+        // );
+
+
+        // return _countEmployees;
+
+
+        _countEmployees -= decreaserValue;
+        _isEffectValueChangerInProgress = true;
+
+        _valueChangerView.DecreaseValueAsync
+        (
+            element: _countEmployeesTextMeshPro, 
+            decreaserValue: decreaserValue, 
+            onEnd: () => {
+                _isEffectValueChangerInProgress = false;
+                _countEmployeesTextMeshPro.text = _countEmployees.ToString();
+
+                onEnd?.Invoke();
+            }
+        );
 
         return _countEmployees;
     }

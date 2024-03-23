@@ -51,7 +51,6 @@ public class DialogueBuilder : MonoBehaviour
     }
 
 
-
     private void OnStartTouch(InputAction.CallbackContext ctx)
     {
         if (_gold.IsEffectValueChangerInProgress())
@@ -81,7 +80,6 @@ public class DialogueBuilder : MonoBehaviour
     }
 
 
-
     public void CreateAppealsToSanta()
     {
         _background.ShowBackgroundByName("SantaWithFlowers");
@@ -91,7 +89,7 @@ public class DialogueBuilder : MonoBehaviour
             _dialogueStrings.GetString(DialogueStrings.Key.workersarecold),
             () =>
             {
-                _gold.DecreaseGold(
+                _gold.DecreaseGoldAsync(
                     decreaserValue: 400,
                     onEnd: () => {
                         _employees.AddHappinessValueAsync
@@ -107,28 +105,33 @@ public class DialogueBuilder : MonoBehaviour
             },
             () =>
             {
-                _employees.DecreaseHappinessValueAsync(2);
-                GoToNextDay();
+                _employees.DecreaseHappinessValueAsync(2, onEnd: () => { 
+                    GoToNextDay();
+                });
             },
             () =>
             {
                 _background.ShowBackgroundByName("Gnomes");
-            });
+            }
+        );
+
         _dialogueYesNo.AddDialogue(
             DialogueName.EmployeesNeutralization.ToString(),
-            _dialogueStrings.GetString(DialogueStrings.Key.paymentсomplaint),
+            _dialogueStrings.GetString(DialogueStrings.Key.paymentcomplaint),
             () =>
             {
                 _background.ShowBackgroundByName("SantaWithGun");
-                _employees.DecreaseHappinessValueAsync(10);
-                _employees.AddCountOfEmployees((_employees.GetCountEmployees() / 2) * -1);
-                _dialogueOk.ShowDialogue(
-                    "",
-                    _dialogueStrings.GetString(DialogueStrings.Key.killedemployeesresult),
-                    () => { 
-                        GoToNextDay(); 
-                    }
-                );
+                _employees.DecreaseHappinessValueAsync(10, onEnd: () => { 
+                    _employees.AddCountOfEmployeesAsync((_employees.GetCountEmployees() / 2) * -1, onEnd: () => { 
+                        _dialogueOk.ShowDialogue(
+                            "",
+                            _dialogueStrings.GetString(DialogueStrings.Key.killedemployeesresult),
+                            () => { 
+                                GoToNextDay(); 
+                            }
+                        );
+                    });
+                });
             },
             () =>
             {
@@ -143,20 +146,23 @@ public class DialogueBuilder : MonoBehaviour
             () =>
             {
                 _background.ShowBackgroundByName("SantaWithGun2");
-            });
+            }
+        );
+
         _dialogueYesNo.AddDialogue(
             DialogueName.BrokenPresents.ToString(),
             _dialogueStrings.GetString(DialogueStrings.Key.brokenpresents),
             () =>
             {
-                _gold.AddGold(300);
-                _employees.DecreaseHappinessValueAsync
-                (
-                    decreaserValue: 2, 
-                    onEnd: () => {
-                        GoToNextDay();
-                    }
-                );
+                _gold.AddGoldAsync(300, onEnd: () => { 
+                    _employees.DecreaseHappinessValueAsync
+                    (
+                        decreaserValue: 2, 
+                        onEnd: () => {
+                            GoToNextDay();
+                        }
+                    );
+                });
             },
             () =>
             {
@@ -170,13 +176,14 @@ public class DialogueBuilder : MonoBehaviour
             () =>
             {
                 _background.ShowBackgroundByName("FallingPresents");
-            });
+            }
+        );
+
         _dialogueYesNo.AddDialogue(
             DialogueName.Productivity.ToString(),
             _dialogueStrings.GetString(DialogueStrings.Key.productiveday),
             () =>
             {
-
                 _dialogueOk.ShowDialogue(
                     "",
                     _dialogueStrings.GetString(DialogueStrings.Key.happyemployeesresult),
@@ -199,7 +206,8 @@ public class DialogueBuilder : MonoBehaviour
             () =>
             {
                 _background.ShowBackgroundByName("Presents");
-            });
+            }
+        );
 
         _dialogueYesNo.AddDialogue(
             DialogueName.Covid.ToString(), 
@@ -235,7 +243,8 @@ public class DialogueBuilder : MonoBehaviour
             () =>
             {
                 _background.ShowBackgroundByName("Gnomes");
-            });
+            }
+        );
     
         _dialogueYesNo.AddDialogue(
             "", 
@@ -276,14 +285,15 @@ public class DialogueBuilder : MonoBehaviour
             _dialogueStrings.GetString(DialogueStrings.Key.injuretment),
             () =>
             {
-                _gold.DecreaseGold(100);
-                _employees.AddHappinessValueAsync
-                (
-                    additionalHappinessValue: 3, 
-                    onEnd: () => {
-                        GoToNextDay();
-                    }
-                );
+                _gold.DecreaseGoldAsync(100, onEnd: () => { 
+                    _employees.AddHappinessValueAsync
+                    (
+                        additionalHappinessValue: 3, 
+                        onEnd: () => {
+                            GoToNextDay();
+                        }
+                    );
+                });
             },
             () =>
             {
@@ -305,24 +315,27 @@ public class DialogueBuilder : MonoBehaviour
             _dialogueStrings.GetString(DialogueStrings.Key.goodsdamage),
             () =>
             {
-                _employees.AddCountOfEmployees(-1);
-                _gold.DecreaseGold(250);
-                _employees.DecreaseHappinessValueAsync(
-                    decreaserValue: 1, 
-                    onEnd: () => {
-                        GoToNextDay();
-                    }
-                );
+                _employees.DecreaseCountOfEmployeesAsync(1, onEnd: () => { 
+                    _gold.DecreaseGoldAsync(250, onEnd: () => { 
+                        _employees.DecreaseHappinessValueAsync(
+                            decreaserValue: 1, 
+                            onEnd: () => {
+                                GoToNextDay();
+                            }
+                        );
+                    });
+                });
             },
             () =>
             {
-                _gold.DecreaseGold(250);
-                _employees.AddHappinessValueAsync(
-                    additionalHappinessValue: 3, 
-                    onEnd: () => {
-                        GoToNextDay();
-                    }
-                );
+                _gold.DecreaseGoldAsync(250, onEnd: () => { 
+                    _employees.AddHappinessValueAsync(
+                        additionalHappinessValue: 3, 
+                        onEnd: () => {
+                            GoToNextDay();
+                        }
+                    );
+                });
             },
             () =>
             {
@@ -335,14 +348,14 @@ public class DialogueBuilder : MonoBehaviour
             _dialogueStrings.GetString(DialogueStrings.Key.sniffing),
             () =>
             {
-                
-                _employees.AddCountOfEmployees(-1);
-                _employees.AddHappinessValueAsync(
-                    additionalHappinessValue: 2, 
-                    onEnd: () => {
-                        GoToNextDay();
-                    }
-                );
+                _employees.DecreaseCountOfEmployeesAsync(1, onEnd: () => { 
+                    _employees.AddHappinessValueAsync(
+                        additionalHappinessValue: 2, 
+                        onEnd: () => {
+                            GoToNextDay();
+                        }
+                    );
+                });
             },
             () =>
             {
@@ -364,43 +377,43 @@ public class DialogueBuilder : MonoBehaviour
             _dialogueStrings.GetString(DialogueStrings.Key.toxicsubstances),
             () =>
             {
-                _gold.DecreaseGold(1000);
-                
-                _daysUntilChristmas.Decrease(2);
-                
-                _dialogueOk.ShowDialogue(
-                    "", 
-                    _dialogueStrings.GetString(DialogueStrings.Key.happyemployeesoncomebackresult),
-                    () =>
-                    {
-                        _employees.AddHappinessValueAsync
-                        (
-                            additionalHappinessValue: 3, 
-                            onEnd: () => {
-                                GoToNextDay();
-                            }
-                        );
-                    }
-                );
+                _gold.DecreaseGoldAsync(1000, onEnd: () => { 
+                    _daysUntilChristmas.Decrease(2);
+                    
+                    _dialogueOk.ShowDialogue(
+                        "", 
+                        _dialogueStrings.GetString(DialogueStrings.Key.happyemployeesoncomebackresult),
+                        () =>
+                        {
+                            _employees.AddHappinessValueAsync
+                            (
+                                additionalHappinessValue: 3, 
+                                onEnd: () => {
+                                    GoToNextDay();
+                                }
+                            );
+                        }
+                    );
+                });
             },
             () =>
             {
-                _employees.AddCountOfEmployees(-3);
-                
-                _dialogueOk.ShowDialogue(
-                    "", 
-                    _dialogueStrings.GetString(DialogueStrings.Key.workintoxicresult),
-                    () =>
-                    {
-                        _employees.DecreaseHappinessValueAsync
-                        (
-                            decreaserValue: 3, 
-                            onEnd: () => {
-                                GoToNextDay();
-                            }
-                        );
-                    }
-                );
+                _employees.DecreaseCountOfEmployeesAsync(3, onEnd: () => { 
+                    _dialogueOk.ShowDialogue(
+                        "", 
+                        _dialogueStrings.GetString(DialogueStrings.Key.workintoxicresult),
+                        () =>
+                        {
+                            _employees.DecreaseHappinessValueAsync
+                            (
+                                decreaserValue: 3, 
+                                onEnd: () => {
+                                    GoToNextDay();
+                                }
+                            );
+                        }
+                    );
+                });
             },
             () =>
             {
@@ -420,8 +433,8 @@ public class DialogueBuilder : MonoBehaviour
                     _dialogueStrings.GetString(DialogueStrings.Key.happyemployeesoncomebackresult),
                     () =>
                     {
-                        _employees.DecreaseHappinessValueAsync(
-                            decreaserValue: 3, 
+                        _employees.AddHappinessValueAsync(
+                            additionalHappinessValue: 3, 
                             onEnd: () => {
                                 GoToNextDay();
                             }
@@ -431,21 +444,21 @@ public class DialogueBuilder : MonoBehaviour
             },
             () =>
             {
-                _employees.AddCountOfEmployees(-3);
-                
-                _dialogueOk.ShowDialogue(
-                    "", 
-                    _dialogueStrings.GetString(DialogueStrings.Key.difficultconditionsresult),
-                    () =>
-                    {
-                        _employees.DecreaseHappinessValueAsync(
-                            decreaserValue: 5, 
-                            onEnd: () => {
-                                GoToNextDay();
-                            }
-                        );
-                    }
-                );
+                _employees.DecreaseCountOfEmployeesAsync(3, onEnd: () => { 
+                    _dialogueOk.ShowDialogue(
+                        "", 
+                        _dialogueStrings.GetString(DialogueStrings.Key.difficultconditionsresult),
+                        () =>
+                        {
+                            _employees.DecreaseHappinessValueAsync(
+                                decreaserValue: 5, 
+                                onEnd: () => {
+                                    GoToNextDay();
+                                }
+                            );
+                        }
+                    );
+                });
             },
             () =>
             {
@@ -458,21 +471,21 @@ public class DialogueBuilder : MonoBehaviour
             _dialogueStrings.GetString(DialogueStrings.Key.ditructedemployees),
             () =>
             {
-                _employees.AddCountOfEmployees(-5);
-                
-                _dialogueOk.ShowDialogue(
-                    "", 
-                    _dialogueStrings.GetString(DialogueStrings.Key.frustratedemployeesresult),
-                    () =>
-                    {
-                        _employees.DecreaseHappinessValueAsync(
-                            decreaserValue: 5, 
-                            onEnd: () => {
-                                GoToNextDay();
-                            }
-                        );
-                    }
-                );
+                _employees.DecreaseCountOfEmployeesAsync(5, onEnd: () => { 
+                    _dialogueOk.ShowDialogue(
+                        "", 
+                        _dialogueStrings.GetString(DialogueStrings.Key.frustratedemployeesresult),
+                        () =>
+                        {
+                            _employees.DecreaseHappinessValueAsync(
+                                decreaserValue: 5, 
+                                onEnd: () => {
+                                    GoToNextDay();
+                                }
+                            );
+                        }
+                    );
+                });
             },
             () =>
             {
@@ -529,15 +542,17 @@ public class DialogueBuilder : MonoBehaviour
             _dialogueStrings.GetString(DialogueStrings.Key.saleWorkers),
             () =>
             {
-                _gold.AddGold(5000);
-                _employees.AddCountOfEmployees(additionalCountEmployees: -3);
-                _employees.DecreaseHappinessValueAsync(
-                    decreaserValue: 5, 
-                    onEnd: () => 
-                    {
-                        GoToNextDay();
-                    }
-                );
+                _gold.AddGoldAsync(5000, onEnd: () => { 
+                    _employees.DecreaseCountOfEmployeesAsync(3, onEnd: () => { 
+                        _employees.DecreaseHappinessValueAsync(
+                            decreaserValue: 5, 
+                            onEnd: () => 
+                            {
+                                GoToNextDay();
+                            }
+                        );  
+                    });
+                });
             },
             () =>
             {
@@ -560,15 +575,19 @@ public class DialogueBuilder : MonoBehaviour
             _dialogueStrings.GetString(DialogueStrings.Key.gunForAnimalOrder),
             () =>
             {
-                _gold.AddGold(2000);
-                _employees.AddCountOfEmployees(additionalCountEmployees: -2);
-                _employees.DecreaseHappinessValueAsync(
-                    decreaserValue: 2, 
-                    onEnd: () => 
-                    {
-                        GoToNextDay();
-                    }
-                );
+                _gold.AddGoldAsync(2000, onEnd: () => { 
+                    _employees.DecreaseCountOfEmployeesAsync(2, onEnd: () => { 
+                        _employees.DecreaseHappinessValueAsync(
+                            decreaserValue: 2, 
+                            onEnd: () => 
+                            {
+                                GoToNextDay();
+                            }
+                        );
+                    });
+
+                });
+
             },
             () =>
             {
@@ -591,14 +610,15 @@ public class DialogueBuilder : MonoBehaviour
             _dialogueStrings.GetString(DialogueStrings.Key.fireResistance),
             () =>
             {
-                _gold.DecreaseGold(1000);
-                _employees.AddHappinessValueAsync(
-                    additionalHappinessValue: 2, 
-                    onEnd: () => 
-                    {
-                        GoToNextDay();
-                    }
-                );
+                _gold.DecreaseGoldAsync(1000, onEnd: () => { 
+                    _employees.AddHappinessValueAsync(
+                        additionalHappinessValue: 2, 
+                        onEnd: () => 
+                        {
+                            GoToNextDay();
+                        }
+                    );
+                });
             },
             () =>
             {
@@ -621,14 +641,15 @@ public class DialogueBuilder : MonoBehaviour
             _dialogueStrings.GetString(DialogueStrings.Key.foodForMagicalDeer),
             () =>
             {
-                _gold.DecreaseGold(200);
-                _employees.AddHappinessValueAsync(
-                    additionalHappinessValue: 3, 
-                    onEnd: () => 
-                    {
-                        GoToNextDay();
-                    }
-                );
+                _gold.DecreaseGoldAsync(200, onEnd: () => { 
+                    _employees.AddHappinessValueAsync(
+                        additionalHappinessValue: 3, 
+                        onEnd: () => 
+                        {
+                            GoToNextDay();
+                        }
+                    );
+                });
             },
             () =>
             {
@@ -652,14 +673,15 @@ public class DialogueBuilder : MonoBehaviour
             _dialogueStrings.GetString(DialogueStrings.Key.giftTheft),
             () =>
             {
-                _employees.AddCountOfEmployees(-1);
-                _employees.AddHappinessValueAsync(
-                    additionalHappinessValue: 3, 
-                    onEnd: () => 
-                    {
-                        GoToNextDay();
-                    }
-                );
+                _employees.DecreaseCountOfEmployeesAsync(1, onEnd: () => { 
+                    _employees.AddHappinessValueAsync(
+                        additionalHappinessValue: 3, 
+                        onEnd: () => 
+                        {
+                            GoToNextDay();
+                        }
+                    );
+                });
             },
             () =>
             {
@@ -682,14 +704,15 @@ public class DialogueBuilder : MonoBehaviour
             _dialogueStrings.GetString(DialogueStrings.Key.sabotage),
             () =>
             {
-                _employees.AddCountOfEmployees(-1);
-                _employees.AddHappinessValueAsync(
-                    additionalHappinessValue: 3, 
-                    onEnd: () => 
-                    {
-                        GoToNextDay();
-                    }
-                );
+                _employees.AddCountOfEmployeesAsync(1, onEnd: () => { 
+                    _employees.AddHappinessValueAsync(
+                        additionalHappinessValue: 3, 
+                        onEnd: () => 
+                        {
+                            GoToNextDay();
+                        }
+                    );
+                });
             },
             () =>
             {
@@ -712,14 +735,15 @@ public class DialogueBuilder : MonoBehaviour
             _dialogueStrings.GetString(DialogueStrings.Key.hardmachines),
             () =>
             {
-                _gold.DecreaseGold(4000);
-                _employees.AddHappinessValueAsync(
-                    additionalHappinessValue: 3,
-                    onEnd: () => 
-                    {
-                        GoToNextDay();
-                    }
-                );
+                _gold.DecreaseGoldAsync(4000, onEnd: () => { 
+                    _employees.AddHappinessValueAsync(
+                        additionalHappinessValue: 3,
+                        onEnd: () => 
+                        {
+                            GoToNextDay();
+                        }
+                    );
+                });
             },
             () =>
             {
@@ -778,7 +802,7 @@ public class DialogueBuilder : MonoBehaviour
             else if (_gold.GetCountGold() > 0)
             {
                 if (_employees.GetHappinessValue() <= -5) {
-                    _employees.AddCountOfEmployees(-1);
+                    _employees.DecreaseCountOfEmployeesAsync(1);
                 }
                 else if (_employees.GetCountEmployees() <= 0)
                 {
@@ -837,11 +861,12 @@ public class DialogueBuilder : MonoBehaviour
         int countGoldToPayForOneEmployee = _employees.GetCountGoldToPayForOneEmployee();
         int countGoldToPay = _employees.GetCountEmployees() * countGoldToPayForOneEmployee;
 
-        _gold.DecreaseGold(
+        _gold.DecreaseGoldAsync(
             decreaserValue: countGoldToPay
         );
 
         AudioManager.Instance.Play("wavesfx");
+
         _leftInfoView.ShowInfoAsync(
             newText: _dialogueStrings.GetString(DialogueStrings.Key.laborinfo) + "\n" + 
                 "* " + countGoldToPayForOneEmployee.ToString() + " " + _dialogueStrings.GetString(DialogueStrings.Key.goldinfo), 

@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using TMPro;
 using UnityEngine.UI;
 
@@ -80,6 +79,7 @@ public class ValueChangerView : MonoBehaviour
 
     private IEnumerator DeactivateAdditionalValueCoroutine(Color32 textColor, Vector2 endPosition, Action onEnd = null)
     {
+        print(endPosition);
         int xOffset = 40;
         float currentTransparence = 255;
         float secondsOfEffect = 0.5f;
@@ -90,6 +90,7 @@ public class ValueChangerView : MonoBehaviour
         float transparenceDecreaser = currentTransparence / countIterations;
         float positionXAdditionalPerFrame = (endPosition.x - _additionalValueTextMeshPro.transform.position.x) / countIterations;
         float positionYAdditionalPerFrame = (endPosition.y - _additionalValueTextMeshPro.transform.position.y) / countIterations;
+        print(positionYAdditionalPerFrame);
 
         _additionalValueTextMeshPro.enabled = true;
 
@@ -115,11 +116,14 @@ public class ValueChangerView : MonoBehaviour
 
             countIterations--;
 
-            yield return new WaitForSeconds(secondsWaitForNewIteration);
+            print("countIterations: " + countIterations);
+            // yield return new WaitForSeconds(secondsWaitForNewIteration);
+            yield return null;
         }
 
         _additionalValueTextMeshPro.enabled = false;
-
+        
+        print("end");
         onEnd?.Invoke();
     } 
 }

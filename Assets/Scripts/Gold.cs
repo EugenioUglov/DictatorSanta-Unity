@@ -16,7 +16,7 @@ public class Gold : MonoBehaviour
     private IEnumerator _valueChangerCoroutine = null;
     
    
-    public int AddGold(int additionalGold, Action onEnd = null)
+    public int AddGoldAsync(int additionalGold, Action onEnd = null)
     {
         _countGold += additionalGold;
             
@@ -37,7 +37,7 @@ public class Gold : MonoBehaviour
         return _countGold;
     }
 
-    public int DecreaseGold(int decreaserValue, Action onEnd = null)
+    public int DecreaseGoldAsync(int decreaserValue, Action onEnd = null)
     {
         _countGold -= decreaserValue;
         if (_countGold < 0) _countGold = 0;

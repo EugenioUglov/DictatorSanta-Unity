@@ -43,7 +43,7 @@ public class DialogueStrings : MonoBehaviour
         // SARA CHANGES.
 
         strings.Add(Key.workersarecold.ToString(), "Santa! Our workers are cold. We need to take urgent action.\nBuy warm clothes for your subordinates for 400 gold?");
-        strings.Add(Key.paymentсomplaint.ToString(), "Our workers are saying they don't get paid enough so they went on strike.\nDo you want to shoot half of the workers?");
+        strings.Add(Key.paymentcomplaint.ToString(), "Our workers are saying they don't get paid enough so they went on strike.\nDo you want to shoot half of the workers?");
         strings.Add(Key.killedemployeesresult.ToString(), "Bloodshed. The rest of the workers are scared. Dark silence. The remaining workers dutifully continue to work in fear.");
         strings.Add(Key.brokenpresents.ToString(), "Part of the presents were broken.\nTake money from the employees who caused this problem (300 gold)?");
         strings.Add(Key.productiveday.ToString(), "A good day! Today, more toys have been created than the ones required. The employees are in good spirits.\nRelease all workers a few hours early?");
@@ -58,7 +58,7 @@ public class DialogueStrings : MonoBehaviour
         strings.Add(Key.ditructedemployees.ToString(), "Subordinates were often distracted from work due to poor working conditions.\nMonitor subordinates and punish them if they are observed doing something instead of working?");
        
         strings.Add(Key.wagesComplaints.ToString(), "The workers are complaining about their wages not being enough. Increase salary by 20 gold for each employee?");
-        strings.Add(Key.saleWorkers.ToString(), "Boss, there is an opportunity to earn extra money, hehe. We get 5,000 gold if we transfer 3 of our workers to Krampus Entertainment. The organization, of course, is shady and their practices are unclear, but the money is good. Sell ​​workers?");
+        strings.Add(Key.saleWorkers.ToString(), "Boss, there is an opportunity to earn extra money, hehe. We get 5,000 gold if we transfer 3 of our workers to Krampus Entertainment. The organization, of course, is shady and their practices are unclear, but the money is good. Sell workers?");
         strings.Add(Key.gunForAnimalOrder.ToString(), "Sir, an order came in from an unknown gentleman. He will pay 2000 gold if we craft a weapon for hunting animals. Accept this job?");
         strings.Add(Key.fireResistance.ToString(), "Recently, we have produced many goods with highly flammable substances. The factory is not adequately equipped with fire fighting equipment. Buy fire safety equipment for 1000 gold?");
         strings.Add(Key.foodForMagicalDeer.ToString(), "Food for the magical reindeers is over. Buy pet food for 200 gold?");
@@ -90,7 +90,7 @@ public class DialogueStrings : MonoBehaviour
     public enum Key
     {
         workersarecold,
-        paymentсomplaint,
+        paymentcomplaint,
         brokenpresents,
         productiveday,
         covid,
