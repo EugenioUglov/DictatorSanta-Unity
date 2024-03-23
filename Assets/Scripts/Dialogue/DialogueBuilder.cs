@@ -122,7 +122,7 @@ public class DialogueBuilder : MonoBehaviour
             {
                 _background.ShowBackgroundByName("SantaWithGun");
                 _employees.DecreaseHappinessValueAsync(10, onEnd: () => { 
-                    _employees.AddCountOfEmployeesAsync((_employees.GetCountEmployees() / 2) * -1, onEnd: () => { 
+                    _employees.DecreaseCountOfEmployeesAsync((_employees.GetCountEmployees() / 2), onEnd: () => { 
                         _dialogueOk.ShowDialogue(
                             "",
                             _dialogueStrings.GetString(DialogueStrings.Key.killedemployeesresult),
