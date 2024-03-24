@@ -40,7 +40,6 @@ public class Music : MonoBehaviour
         }
         _currentMusicName = _remainingMusicNamesToPlay[0];
         _remainingMusicNamesToPlay.RemoveAt(0);
-        print(_currentMusicName);
         AudioManager.Instance.Play(_currentMusicName);
     }
 

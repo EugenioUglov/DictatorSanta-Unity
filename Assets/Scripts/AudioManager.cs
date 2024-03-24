@@ -40,7 +40,6 @@ public class AudioManager : MonoBehaviour
         Sound sound = GetSound(name);
         if (sound == null) return;
         
-        print(name);
         sound.Source.Play();
     }
     

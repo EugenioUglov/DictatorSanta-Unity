@@ -89,7 +89,6 @@ public class ValueChangerView : MonoBehaviour
         float transparenceDecreaser = currentTransparence / countIterations;
         float positionXAdditionalPerFrame = (endPosition.x - _additionalValueTextMeshPro.transform.position.x) / countIterations;
         float positionYAdditionalPerFrame = (endPosition.y - _additionalValueTextMeshPro.transform.position.y) / countIterations;
-        print(positionYAdditionalPerFrame);
 
         _additionalValueTextMeshPro.enabled = true;
 
