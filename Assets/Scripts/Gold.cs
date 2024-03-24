@@ -19,8 +19,7 @@ public class Gold : MonoBehaviour
     public int AddGoldAsync(int additionalGold, Action onEnd = null)
     {
         _countGold += additionalGold;
-            
-        _goldTextMeshPro.text = _countGold.ToString();
+
         _isEffectValueChangerInProgress = true;
 
         _valueChangerView.AddValueAsync(

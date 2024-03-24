@@ -79,7 +79,6 @@ public class ValueChangerView : MonoBehaviour
 
     private IEnumerator DeactivateAdditionalValueCoroutine(Color32 textColor, Vector2 endPosition, Action onEnd = null)
     {
-        print(endPosition);
         int xOffset = 40;
         float currentTransparence = 255;
         float secondsOfEffect = 0.5f;
@@ -116,14 +115,12 @@ public class ValueChangerView : MonoBehaviour
 
             countIterations--;
 
-            print("countIterations: " + countIterations);
             // yield return new WaitForSeconds(secondsWaitForNewIteration);
             yield return null;
         }
 
         _additionalValueTextMeshPro.enabled = false;
         
-        print("end");
         onEnd?.Invoke();
     } 
 }
