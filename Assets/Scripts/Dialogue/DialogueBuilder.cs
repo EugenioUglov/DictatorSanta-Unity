@@ -53,37 +53,19 @@ public class DialogueBuilder : MonoBehaviour
 
     private void OnStartTouch(InputAction.CallbackContext ctx)
     {
-        if (_gold.IsEffectValueChangerInProgress())
-        {
-            _gold.SkipEffectValueChanger();    
-        }
 
-        if (_employees.IsEffectValueChangerInProgress())
-        {
-            _employees.SkipEffectValueChanger();
-        }
-
-        if (_dialogueYesNo.IsTextTypingInProgress())
-        {
-            _dialogueYesNo.SkipTypingText();
-        }
-
-        if (_leftInfoView.IsEffectOfPanelInProgress())
-        {
-            _leftInfoView.SkipPanelEffect();
-        }
     }
 
     private void OnEndTouch(InputAction.CallbackContext ctx)
     {
-
+        SkipCurrentTask();
     }
 
 
     public void CreateAppealsToSanta()
     {
-        _background.ShowBackgroundByName("SantaWithFlowers");
-
+        _background.ShowRandomBackground();
+        
         _dialogueYesNo.AddDialogue(
             DialogueName.WarmClothesForEmployees.ToString(),
             _dialogueStrings.GetString(DialogueStrings.Key.workersarecold),
@@ -101,17 +83,12 @@ public class DialogueBuilder : MonoBehaviour
                         );
                     }
                 );
-
             },
             () =>
             {
                 _employees.DecreaseHappinessValueAsync(2, onEnd: () => { 
                     GoToNextDay();
                 });
-            },
-            () =>
-            {
-                _background.ShowBackgroundByName("Gnomes");
             }
         );
 
@@ -175,7 +152,7 @@ public class DialogueBuilder : MonoBehaviour
             },
             () =>
             {
-                _background.ShowBackgroundByName("FallingPresents");
+                _background.ShowBackgroundByName("DamagedGoods");
             }
         );
 
@@ -202,10 +179,6 @@ public class DialogueBuilder : MonoBehaviour
             {
                 _employees.DecreaseHappinessValueAsync(1);
                 GoToNextDay();
-            },
-            () =>
-            {
-                _background.ShowBackgroundByName("Presents");
             }
         );
 
@@ -239,10 +212,6 @@ public class DialogueBuilder : MonoBehaviour
                         );
                     }
                 );
-            },
-            () =>
-            {
-                _background.ShowBackgroundByName("Gnomes");
             }
         );
     
@@ -276,7 +245,7 @@ public class DialogueBuilder : MonoBehaviour
             },
             () =>
             {
-                _background.ShowBackgroundByName("Hallucination1");
+                _background.ShowBackgroundByName("Drug");
             }
         );
     
@@ -306,7 +275,7 @@ public class DialogueBuilder : MonoBehaviour
             },
             () =>
             {
-                _background.ShowBackgroundByName("FallingPresents");
+                _background.ShowBackgroundByName("DamagedGoods");
             }
         );
     
@@ -339,7 +308,7 @@ public class DialogueBuilder : MonoBehaviour
             },
             () =>
             {
-                _background.ShowBackgroundByName("FallingPresents");
+                _background.ShowBackgroundByName("DamagedGoods");
             }
         );
         
@@ -365,10 +334,6 @@ public class DialogueBuilder : MonoBehaviour
                         GoToNextDay();
                     }
                 );
-            },
-            () =>
-            {
-                _background.ShowBackgroundByName("Hallucination1");
             }
         );
         
@@ -414,10 +379,6 @@ public class DialogueBuilder : MonoBehaviour
                         }
                     );
                 });
-            },
-            () =>
-            {
-                _background.ShowBackgroundByName("Hallucination1");
             }
         );
         
@@ -459,10 +420,6 @@ public class DialogueBuilder : MonoBehaviour
                         }
                     );
                 });
-            },
-            () =>
-            {
-                _background.ShowBackgroundByName("Gnomes");
             }
         ); 
         
@@ -500,10 +457,6 @@ public class DialogueBuilder : MonoBehaviour
                         GoToNextDay();
                     }
                 );
-            },
-            () =>
-            {
-                _background.ShowBackgroundByName("Gnomes");
             }
         );
 
@@ -530,10 +483,6 @@ public class DialogueBuilder : MonoBehaviour
                         GoToNextDay();
                     }
                 );
-            },
-            () =>
-            {
-                _background.ShowBackgroundByName("Gnomes");
             }
         );
 
@@ -563,10 +512,6 @@ public class DialogueBuilder : MonoBehaviour
                         GoToNextDay();
                     }
                 );
-            },
-            () =>
-            {
-                _background.ShowBackgroundByName("SantaDevilWithDogs");
             }
         );
 
@@ -598,10 +543,6 @@ public class DialogueBuilder : MonoBehaviour
                         GoToNextDay();
                     }
                 );
-            },
-            () =>
-            {
-                _background.ShowBackgroundByName("SantaDevilWithDogs");
             }
         );
 
@@ -629,10 +570,6 @@ public class DialogueBuilder : MonoBehaviour
                         GoToNextDay();
                     }
                 );
-            },
-            () =>
-            {
-                _background.ShowBackgroundByName("Gnomes");
             }
         );
         
@@ -661,10 +598,6 @@ public class DialogueBuilder : MonoBehaviour
                         GoToNextDay();
                     }
                 );
-            },
-            () =>
-            {
-                _background.ShowBackgroundByName("Gnomes");
             }
         );
 
@@ -692,10 +625,6 @@ public class DialogueBuilder : MonoBehaviour
                         GoToNextDay();
                     }
                 );
-            },
-            () =>
-            {
-                _background.ShowBackgroundByName("Gnomes");
             }
         );
 
@@ -723,10 +652,6 @@ public class DialogueBuilder : MonoBehaviour
                         GoToNextDay();
                     }
                 );
-            },
-            () =>
-            {
-                _background.ShowBackgroundByName("Gnomes");
             }
         );
 
@@ -755,10 +680,6 @@ public class DialogueBuilder : MonoBehaviour
                         GoToNextDay();
                     }
                 );
-            },
-            () =>
-            {
-                _background.ShowBackgroundByName("Gnomes");
             }
         );
         
@@ -771,6 +692,7 @@ public class DialogueBuilder : MonoBehaviour
 
     private void GoToNextDay()
     {
+
         int daysUntilChristmas = _daysUntilChristmas.Decrease();
 
 
@@ -785,8 +707,7 @@ public class DialogueBuilder : MonoBehaviour
                 string finalContent = _dialogueStrings.GetString(DialogueStrings.Key.nightmarechristmasfinal);
 
                 ShowFinalDialogue(finalContent);
-                _background.ShowBackgroundByName("RudeRedSanta");
-                _music.PlayBadResultMusic();
+                HandleBadResult();
             }
             else if (_gold.GetCountGold() <= 0)
             {
@@ -796,8 +717,7 @@ public class DialogueBuilder : MonoBehaviour
 
                 ShowFinalDialogue(finalContent);
 
-                _background.ShowBackgroundByName("RudeRedSanta");
-                _music.PlayBadResultMusic();
+                HandleBadResult();
             }
             else if (_gold.GetCountGold() > 0)
             {
@@ -811,8 +731,7 @@ public class DialogueBuilder : MonoBehaviour
 
                     ShowFinalDialogue(finalContent);
 
-                    _background.ShowBackgroundByName("RudeRedSanta");
-                    _music.PlayBadResultMusic();
+                    HandleBadResult();
                 }
             }
         }
@@ -823,20 +742,29 @@ public class DialogueBuilder : MonoBehaviour
             if (_employees.GetHappinessValue() > 0)
             {
                 finalContent += _dialogueStrings.GetString(DialogueStrings.Key.amazingchristmasfinal);
-                
-                _background.ShowBackgroundByName("HappySanta");
+            
             }
             else if (_employees.GetHappinessValue() <= 0)
             {
                 finalContent += _dialogueStrings.GetString(DialogueStrings.Key.goodchristmasfinal) + "\n" + _dialogueStrings.GetString(DialogueStrings.Key.nosatisfiedworkersfinal);
-                
-                _background.ShowBackgroundByName("SantaWithGunBlackWhite3");
             }
 
             
             ShowFinalDialogue(finalContent);
-            _music.PlayGoodResultMusic();
+            HandleGoodResult();
         }
+    }
+
+    private void HandleBadResult() 
+    {
+        _background.ShowBackgroundByName("SantaDevil");
+        _music.PlayBadResultMusic();
+    }
+
+    private void HandleGoodResult() 
+    {
+        _background.ShowBackgroundByName("SantaAngel");
+        _music.PlayGoodResultMusic();
     }
 
     private void ShowFinalDialogue(string content)
@@ -856,6 +784,31 @@ public class DialogueBuilder : MonoBehaviour
         );
     }
 
+
+    private void SkipCurrentTask()
+    {
+        if (_gold.IsEffectValueChangerInProgress())
+        {
+            _gold.SkipEffectValueChanger();    
+        }
+
+        if (_employees.IsEffectValueChangerInProgress())
+        {
+            _employees.SkipEffectValueChanger();
+        }
+
+        if (_dialogueYesNo.IsTextTypingInProgress())
+        {
+            _dialogueYesNo.SkipTypingText();
+        }
+
+        if (_leftInfoView.IsEffectOfPanelInProgress())
+        {
+            _leftInfoView.SkipPanelEffect();
+        }
+    }
+
+
     private int PayEmployees()
     {
         int countGoldToPayForOneEmployee = _employees.GetCountGoldToPayForOneEmployee();
@@ -872,6 +825,7 @@ public class DialogueBuilder : MonoBehaviour
                 "* " + countGoldToPayForOneEmployee.ToString() + " " + _dialogueStrings.GetString(DialogueStrings.Key.goldinfo), 
             onEnd: () => 
             {
+                _background.ShowRandomBackground();
                 _dialogueYesNo.ShowNextDialogue();
             }
         );

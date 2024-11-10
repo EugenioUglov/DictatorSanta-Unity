@@ -14,6 +14,7 @@ public class DialogueYesNo : Dialogue
     
     private bool _isTextTypingInProgress = false;
     
+    
     public bool ShowNextDialogue()
     {
         _i_currentDialogueStruct++;

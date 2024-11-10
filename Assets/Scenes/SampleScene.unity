@@ -601,37 +601,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - Name: music1
-    AudioClip: {fileID: 8300000, guid: e58e76d740dfdeb469d3dccdcda0d609, type: 3}
+    AudioClip: {fileID: 8300000, guid: ccaea1c91247b70499509dbd4b8fa5b3, type: 3}
     Volume: 1
     Pitch: 1
     Loop: 0
     Source: {fileID: 0}
   - Name: music2
-    AudioClip: {fileID: 8300000, guid: 12ae7d58d51e3a049b51376108d35cd5, type: 3}
+    AudioClip: {fileID: 8300000, guid: eea89d8511f81e944aa63eb84284081b, type: 3}
     Volume: 1
     Pitch: 1
     Loop: 0
     Source: {fileID: 0}
   - Name: music3
-    AudioClip: {fileID: 8300000, guid: e3c793d865ff91c4c90181048e8d1da2, type: 3}
+    AudioClip: {fileID: 8300000, guid: 8fb36589ed97c0b449fd0b2fc3c3f7bc, type: 3}
     Volume: 1
     Pitch: 1
     Loop: 0
     Source: {fileID: 0}
   - Name: music4
-    AudioClip: {fileID: 8300000, guid: 694d3d2c299992d4a905557dfafb27ff, type: 3}
+    AudioClip: {fileID: 8300000, guid: ddbff5365e571a14b8cdba70df1874ba, type: 3}
     Volume: 1
     Pitch: 1
     Loop: 0
     Source: {fileID: 0}
   - Name: music5
-    AudioClip: {fileID: 8300000, guid: 6b96a62ca9bb081429b8ddd504ca8e2d, type: 3}
+    AudioClip: {fileID: 8300000, guid: 0e035567374f20f4f94ccbb7d90a8f8d, type: 3}
     Volume: 1
     Pitch: 1
     Loop: 0
     Source: {fileID: 0}
   - Name: music6
-    AudioClip: {fileID: 8300000, guid: 80877b39ad0489940ba344ee0f75009b, type: 3}
+    AudioClip: {fileID: 8300000, guid: fbef04b1a0d689d4abcf1c74e73f5d65, type: 3}
     Volume: 1
     Pitch: 1
     Loop: 0
@@ -1651,7 +1651,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &939195214
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1692,7 +1692,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f7f6a3c8410cb1346b52d4032daef253, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 397763bf4ab5bc347bf55cdf113025a9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1749,6 +1749,7 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: 598009e218dd5304e8d5d3293a9506da, type: 3}
   - _name: SantaDevilWithDogs
     _sprite: {fileID: 21300000, guid: e0c059d3bbec6ca499517af5c1b0424f, type: 3}
+  _randomImages: []
 --- !u!1 &1037007476
 GameObject:
   m_ObjectHideFlags: 0
@@ -1819,7 +1820,7 @@ MonoBehaviour:
   _gold: {fileID: 892680578}
   _employees: {fileID: 892680580}
   _daysUntilChristmas: {fileID: 892680579}
-  _background: {fileID: 939195217}
+  _background: {fileID: 1427879776}
   _leftInfoView: {fileID: 892680583}
   _music: {fileID: 423799656}
 --- !u!114 &1037007480
@@ -1947,9 +1948,8 @@ GameObject:
   - component: {fileID: 1154810000}
   - component: {fileID: 1154810003}
   - component: {fileID: 1154810002}
-  - component: {fileID: 1154810001}
   m_Layer: 5
-  m_Name: Background - Image (1)
+  m_Name: Black Background - Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1975,45 +1975,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1154810001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1154809999}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfa6086872b6b0940affcdcfb3ec6f9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _backgroundStructs:
-  - _name: FallingPresents
-    _sprite: {fileID: 21300000, guid: 74373234c3e6c5647a39224b4d09b5b3, type: 3}
-  - _name: SantaWithFlowers
-    _sprite: {fileID: 21300000, guid: 2f780803f7c64b6409ce3e406b9ea571, type: 3}
-  - _name: Gnomes
-    _sprite: {fileID: 21300000, guid: 5d4c0a2a63f5827468a68d0bf5a9935e, type: 3}
-  - _name: SantaWithGun
-    _sprite: {fileID: 21300000, guid: b144af6e0bf9302479aadf13b8a44e30, type: 3}
-  - _name: SantaWithGun2
-    _sprite: {fileID: 21300000, guid: 7d3fb635afe48d54eb8d1a69c220f648, type: 3}
-  - _name: FallingPresents
-    _sprite: {fileID: 21300000, guid: 74373234c3e6c5647a39224b4d09b5b3, type: 3}
-  - _name: Presents
-    _sprite: {fileID: 21300000, guid: 157298bec51e70a4a973a8a19338ae9e, type: 3}
-  - _name: SantaDevil
-    _sprite: {fileID: 21300000, guid: bc48f6cc3d849ec4d84205bffd9cf836, type: 3}
-  - _name: Hallucination1
-    _sprite: {fileID: 21300000, guid: 47ecfa98453a9304ca9114d788c1ce17, type: 3}
-  - _name: RudeRedSanta
-    _sprite: {fileID: 21300000, guid: 4226a4804d7d9bb4aab9dc3765622859, type: 3}
-  - _name: HappySanta
-    _sprite: {fileID: 21300000, guid: 22e608bb8dd06ba4f83f63f1ecaef1dc, type: 3}
-  - _name: SantaWithGunBlackWhite3
-    _sprite: {fileID: 21300000, guid: 598009e218dd5304e8d5d3293a9506da, type: 3}
-  - _name: SantaDevilWithDogs
-    _sprite: {fileID: 21300000, guid: e0c059d3bbec6ca499517af5c1b0424f, type: 3}
 --- !u!114 &1154810002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2186,6 +2147,136 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1255762962}
+  m_CullTransparentMesh: 1
+--- !u!1 &1427879774
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1427879775}
+  - component: {fileID: 1427879778}
+  - component: {fileID: 1427879777}
+  - component: {fileID: 1427879776}
+  m_Layer: 5
+  m_Name: Background - Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1427879775
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427879774}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2009971408}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0.00012207031, y: 0}
+  m_SizeDelta: {x: -0.00012207, y: 618.7104}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1427879776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427879774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfa6086872b6b0940affcdcfb3ec6f9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _backgroundStructs:
+  - _name: DamagedGoods
+    _sprite: {fileID: 21300000, guid: 4ed018bbbc524d748a8e9b3f2fb556d1, type: 3}
+  - _name: SantaWithGun
+    _sprite: {fileID: 21300000, guid: fc03ebbab4787bd4181ddc87d05df1da, type: 3}
+  - _name: SantaWithGun2
+    _sprite: {fileID: 21300000, guid: 134e697e6f0f18447ab500e8ad6509d9, type: 3}
+  - _name: SantaDevil
+    _sprite: {fileID: 21300000, guid: a0678a03b7ee26147ab2a4963f68d385, type: 3}
+  - _name: SantaAngel
+    _sprite: {fileID: 21300000, guid: 171a23b8081fc1d4ea4a916813a61c28, type: 3}
+  - _name: Drug
+    _sprite: {fileID: 21300000, guid: 787230cb524a31241b5b1ef30ccac12c, type: 3}
+  _randomImages:
+  - {fileID: 21300000, guid: 7e2b86623689f864586f7e654cc1e6f5, type: 3}
+  - {fileID: 21300000, guid: 1cad0a899da966c4daa13a12e7dd9adf, type: 3}
+  - {fileID: 21300000, guid: 397763bf4ab5bc347bf55cdf113025a9, type: 3}
+  - {fileID: 21300000, guid: b5c98be252f2c89418fa1ecd3a0631fe, type: 3}
+  - {fileID: 21300000, guid: e337198da73d4b248aba2d487dac3784, type: 3}
+  - {fileID: 21300000, guid: e1239353339f4a64297a9a372b443132, type: 3}
+  - {fileID: 21300000, guid: 3bfff2eea0aea174ca9754faea8700ef, type: 3}
+  - {fileID: 21300000, guid: 1bd07206999d65147b4808cbe9c12b92, type: 3}
+  - {fileID: 21300000, guid: b9d7ad058af40634ea6a18d60192dd50, type: 3}
+  - {fileID: 21300000, guid: 7105f0a7aa1d1df499e52af253326e20, type: 3}
+  - {fileID: 21300000, guid: b3e64eae44bc9db4aba3e85586e42a16, type: 3}
+  - {fileID: 21300000, guid: 01b31a9f510a547479e48bae1ef1d100, type: 3}
+  - {fileID: 21300000, guid: 787230cb524a31241b5b1ef30ccac12c, type: 3}
+  - {fileID: 21300000, guid: 3aa33be3ac3e5a84c8bad4fe21101211, type: 3}
+  - {fileID: 21300000, guid: 7e5c256a78996584bb22bee1d360c5f4, type: 3}
+  - {fileID: 21300000, guid: fb3f33f138749b54db8e69518ea694b6, type: 3}
+  - {fileID: 21300000, guid: 680bfd8e41b23bf42840eecb30a3b101, type: 3}
+  - {fileID: 21300000, guid: 34d8b57ce99f1614caef9d987e8d1f2e, type: 3}
+  - {fileID: 21300000, guid: fc03ebbab4787bd4181ddc87d05df1da, type: 3}
+  - {fileID: 21300000, guid: 74c587f2fc6e00146a0540c908b87f76, type: 3}
+  - {fileID: 21300000, guid: d3a2b22af0b541541931b3f2dc3b0265, type: 3}
+  - {fileID: 21300000, guid: f90be5c76f6d4004ebbb870ca2e39f58, type: 3}
+  - {fileID: 21300000, guid: bc513172da919434fb4f8ffe649e7be8, type: 3}
+  - {fileID: 21300000, guid: fc5c58f17e5f7234cae282cfac442daf, type: 3}
+  - {fileID: 21300000, guid: a607658a4ba38e54b88b9a23caccc2b7, type: 3}
+  - {fileID: 21300000, guid: 719a109ba3f2f7341a0312140c98bbb3, type: 3}
+  - {fileID: 21300000, guid: 15f75e8eb7d8281408ee4a3ee980f8f7, type: 3}
+--- !u!114 &1427879777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427879774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 5ddc7114f506c98499d16b2683691074, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1427879778
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427879774}
   m_CullTransparentMesh: 1
 --- !u!1 &1549190910
 GameObject:
@@ -2760,7 +2851,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 21.44}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 69.9, y: -28}
+  m_AnchoredPosition: {x: 69.9, y: -6.7}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1800043788
@@ -2813,7 +2904,7 @@ GameObject:
   - component: {fileID: 1845805713}
   - component: {fileID: 1845805712}
   m_Layer: 5
-  m_Name: Black background - Panel
+  m_Name: Black background Left Top - Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3808,6 +3899,7 @@ RectTransform:
   m_Children:
   - {fileID: 939195214}
   - {fileID: 1154810000}
+  - {fileID: 1427879775}
   - {fileID: 366102982}
   - {fileID: 1845805711}
   - {fileID: 2111774010}
@@ -4138,7 +4230,7 @@ GameObject:
   - component: {fileID: 2111774012}
   - component: {fileID: 2111774011}
   m_Layer: 5
-  m_Name: Black background - Panel (1)
+  m_Name: Black background Right Top- Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4161,7 +4253,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -12, y: -14.481201}
+  m_AnchoredPosition: {x: -12, y: -14.481445}
   m_SizeDelta: {x: 200, y: 157.76001}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &2111774011
